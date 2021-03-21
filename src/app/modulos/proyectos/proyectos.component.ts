@@ -18,6 +18,7 @@ export class ProyectosComponent implements OnInit {
   ngOnInit(): void {
     this.characterService.getProyectos(this.route.snapshot.paramMap.get("id")).subscribe(response => {
       this.proyectos = response.data.results;
+      console.warn(this.proyectos)
     })
   }
 
