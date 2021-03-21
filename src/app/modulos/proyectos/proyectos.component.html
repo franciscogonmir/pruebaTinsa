@@ -1,40 +1,42 @@
 <section>
-<mat-table [dataSource]="proyectos" class="mat-elevation-z8">
-  <!-- id Column -->
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
-    <mat-cell *matCellDef="let proyecto"> {{proyecto.id}} </mat-cell>
-  </ng-container>
-
-  <!-- startYear Column -->
-  <ng-container matColumnDef="startYear">
-    <mat-header-cell *matHeaderCellDef> StartYear </mat-header-cell>
-    <mat-cell *matCellDef="let proyecto"> {{proyecto.startYear}} </mat-cell>
-  </ng-container>
-
-  <!-- endYear Column -->
-  <ng-container matColumnDef="endYear">
-    <mat-header-cell *matHeaderCellDef> EndYear </mat-header-cell>
-    <mat-cell *matCellDef="let proyecto"> {{proyecto.endYear}} </mat-cell>
-  </ng-container>
-
-  <!-- modified Column -->
-  <ng-container matColumnDef="modified">
-    <mat-header-cell *matHeaderCellDef> modified </mat-header-cell>
-    <mat-cell *matCellDef="let proyecto"> {{proyecto.modified}} </mat-cell>
-  </ng-container>
-
-  <!-- title Column-->
-  <ng-container matColumnDef="title">
-    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-    <mat-cell *matCellDef="let proyecto">{{proyecto.title}}</mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="ColumnasAMostrar"></mat-header-row>
-  <mat-row *matRowDef="let proyecto; columns: ColumnasAMostrar;"></mat-row>
-</mat-table>
-
-<div>
-  <button mat-raised-button color="primary" (click)="irAtras()">Volver</button>
-</div>
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Lista de Proyectos asignados a {{getNombreRecurso()}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container *ngIf="!proyectos">
+        <mat-spinner></mat-spinner>
+      </ng-container>
+      <ng-container *ngIf="proyectos">
+        <mat-table [dataSource]="proyectos" class="mat-elevation-z8">
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+            <mat-cell *matCellDef="let proyecto"> {{proyecto.id}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="startYear">
+            <mat-header-cell *matHeaderCellDef> StartYear </mat-header-cell>
+            <mat-cell *matCellDef="let proyecto"> {{proyecto.startYear}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="endYear">
+            <mat-header-cell *matHeaderCellDef> EndYear </mat-header-cell>
+            <mat-cell *matCellDef="let proyecto"> {{proyecto.endYear}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="modified">
+            <mat-header-cell *matHeaderCellDef> modified </mat-header-cell>
+            <mat-cell *matCellDef="let proyecto"> {{proyecto.modified}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let proyecto">{{proyecto.title}}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="ColumnasAMostrar"></mat-header-row>
+          <mat-row *matRowDef="let proyecto; columns: ColumnasAMostrar;"></mat-row>
+        </mat-table>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="irAtras()">Volver</button>
+    </mat-card-actions>
+  </mat-card>
 </section>

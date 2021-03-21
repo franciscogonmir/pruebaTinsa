@@ -22,14 +22,18 @@ export class ProyectosComponent implements OnInit ,OnDestroy{
     this.subsProyectos.unsubscribe();
   }
 
+  //return el nombre del recurso pasado por parámetro
+  getNombreRecurso():string{
+    return this.route.snapshot.paramMap.get("name");
+  }
+
   ngOnInit(): void {
     this.subsProyectos = this.characterService.getProyectos(this.route.snapshot.paramMap.get("id")).subscribe(response => {
       this.proyectos = response.data.results;
-      console.warn(this.proyectos)
     })
   }
-
-  irAtras(){
+  //vuelve al componente anterior
+  irAtras():void{
     this.location.back();
   }
 

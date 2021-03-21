@@ -21,6 +21,8 @@ export class RecursosService {
 
   constructor(private http:HttpClient) { }
 
+  //pide a la api los datos 
+  //@params offset: es la posicion a partir de la que se quieren obtener los elementos
   getRecursosFromServer(offset:string){ 
       this.httpOptions.params = new HttpParams().set("ts",environment.timeStamp).set("apikey",environment.publicKey).set("hash",environment.hash).set("offset",offset);
       this.http.get<Response>(this.recursosUrl,this.httpOptions).subscribe(data =>{
@@ -30,16 +32,16 @@ export class RecursosService {
       this.NumResultados$.next(this.numResultados);
     });
  }
-
- getRecursos(offset){
+//return un observable con un Array de recursos
+ getRecursos(offset):Observable<Recursos[]>{
    this.getRecursosFromServer(offset);
    return this.recursos$.asObservable();
  }
-
- getTotalResultados(){
+//return un observable con el total de elementos que hay 
+ getTotalResultados():Observable<number>{
    return this.NumResultados$.asObservable();
  }
-
+//return los proyectos asignados a un recurso
  getProyectos(id:string):Observable<ResponseProyectos>{
   this.httpOptions.params = new HttpParams().set("ts",environment.timeStamp).set("apikey",environment.publicKey).set("hash",environment.hash);
     let urlSeries = this.recursosUrl + `/${id}/series`;

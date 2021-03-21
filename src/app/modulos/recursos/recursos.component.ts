@@ -32,6 +32,7 @@ export class RecursosComponent implements OnInit,OnDestroy {
     })
   }
 
+  //Pide al servicio los resultadod devueltos por la nueva página
   cambioPagina(event){
     let offset = event.pageIndex * event.pageSize;
     this.subsRescursos = this.recursosSvc.getRecursos(offset.toString()).subscribe(recursos => {

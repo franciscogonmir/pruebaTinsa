@@ -7,7 +7,7 @@ import { RecursosComponent } from './modulos/recursos/recursos.component';
 const routes: Routes = [
 
   {path: 'recursos', component: RecursosComponent},
-  {path: 'proyectos/:id', component: ProyectosComponent},
+  {path: 'proyectos/:id/:name', component: ProyectosComponent},
   {path: '', redirectTo: '/recursos', pathMatch: 'full'},
 ];
 
