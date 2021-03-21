@@ -1,38 +1,37 @@
 <mat-table [dataSource]="listaRecursos" class="mat-elevation-z8">
-    <!-- id Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
-      <mat-cell *matCellDef="let recurso"> {{recurso.id}} </mat-cell>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let recurso"> {{recurso.name}} </mat-cell>
-    </ng-container>
-  
-    <!-- description Column -->
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> description </mat-header-cell>
-      <mat-cell *matCellDef="let recurso"> {{recurso.description}} </mat-cell>
-    </ng-container>
-  
-    <!-- modified Column -->
-    <ng-container matColumnDef="modified">
-      <mat-header-cell *matHeaderCellDef> modified </mat-header-cell>
-      <mat-cell *matCellDef="let recurso"> {{recurso.modified | date}} </mat-cell>
-    </ng-container>
-    <!-- series Column-->
-    <ng-container matColumnDef="series">
-        <mat-header-cell *matHeaderCellDef> series </mat-header-cell>
-        <mat-cell *matCellDef="let recurso"><button mat-raised-button color="primary" routerLink="/proyectos/{{recurso.id}}">ver proyectos</button>
-        </mat-cell>
-      </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
-    <mat-row *matRowDef="let recurso; columns: columnasAMostrar;"></mat-row>
-  </mat-table>
+  <!-- id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+    <mat-cell *matCellDef="let recurso"> {{recurso.id}} </mat-cell>
+  </ng-container>
 
-  <mat-paginator [length]="totalResultados"
-  [pageSize]="20"
-  (page)="cambioPagina($event)"></mat-paginator>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let recurso"> {{recurso.name}} </mat-cell>
+  </ng-container>
+
+  <!-- description Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> description </mat-header-cell>
+    <mat-cell *matCellDef="let recurso"> {{recurso.description}} </mat-cell>
+  </ng-container>
+
+  <!-- modified Column -->
+  <ng-container matColumnDef="modified">
+    <mat-header-cell *matHeaderCellDef> modified </mat-header-cell>
+    <mat-cell *matCellDef="let recurso"> {{recurso.modified | date}} </mat-cell>
+  </ng-container>
+  <!-- series Column-->
+  <ng-container matColumnDef="series">
+    <mat-header-cell *matHeaderCellDef> series </mat-header-cell>
+    <mat-cell *matCellDef="let recurso"><button mat-raised-button color="primary"
+        routerLink="/proyectos/{{recurso.id}}">ver proyectos</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+  <mat-row *matRowDef="let recurso; columns: columnasAMostrar;"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="totalResultados" [pageSize]="20" (page)="cambioPagina($event)"></mat-paginator>
